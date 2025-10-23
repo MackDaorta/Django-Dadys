@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapateria Dadys</title>
+    <link rel="stylesheet" href="{% static 'catalogo/style.css' %}">
+</head>
+<body>
+    <h1>Catalogo</h1> 
+    <button>Editar <a href="/admin/">panel de administracion</a></button>
+    <hr>
+
+    {%for zapato in lista_zapatos %}
+        <div>
+            <h2>{{zapato.marca}} - {{zapato.modelo}}</h2>
+            <p><strong>Precio:</strong> S/.{{zapato.precio}}</p>
+            <p><strong>Talla:</strong> {{zapato.talla}}</p>
+            <p><strong>Stock:</strong> {{zapato.stock}}</p>
+            {% if zapato.imagen %}
+                <img src="{{zapato.imagen.url}}" alt="{{zapato.modelo}}" width="200">
+            {% else %}
+                <p>(Sin imagen)</p>
+            {% endif %}
+        </div>
+        <hr>
+    {% empty %}
+        <p>No hay zapatos en el catalogo todavia.</p>
+        <p>Intenta añadir algunos desde el <a href="/admin/">panel de administracion</a></p>
+    {% endfor%}
+</body>
+</html>
