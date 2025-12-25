@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="flex gap-4 mb-8">
+  <a href="{% url 'inventario:AgregarZapato' %}">
+  <button class="bg-blue-600 text-white px-4 py-2 rounded">➕ Agregar Zapato</button>
+  </a>
+  <button class="bg-green-600 text-white px-4 py-2 rounded">💰 Ver Ventas</button>
+</div>
+{% for zapato in lista %}
+<div class="border rounded-lg p-4 shadow-sm w-64">
+  <img src="{{ zapato.imagen }}" alt="Zapato" class="w-full h-40 object-cover">
+  <h3 class="font-bold mt-2">{{ zapato.nombre }}</h3>
+  <p class="text-gray-500">S/ {{ zapato.marca }}</p>
+  <p class="text-gray-500">S/ {{ zapato.precio }}</p>
+  <a>
+  <button class="mt-4 w-full bg-gray-100 py-2 hover:bg-gray-200">🔍 Ver Detalles</button>
+  </a>
+</div>
+{% empty %}
+<h3>Aun no hay zapatos</h3>
+{% endfor %}
+{% endblock%}
