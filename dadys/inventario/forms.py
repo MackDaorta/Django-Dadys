@@ -12,3 +12,13 @@ class ZapatoForm(forms.ModelForm):
             'precio': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
             'imagen': forms.FileInput(attrs={'class': 'form-control'}),
         }
+
+class MarcaForm(forms.ModelForm):
+    class Meta:
+        model=Marca
+        fields={'nombre','proovedor'}
+
+        widgets={
+            'nombre': forms.TextInput(attrs={'class': 'form-control','placeholder':'Ej Vissano'}),
+            'proovedor': forms.TextInput(attrs={'class': 'form-control','placeholder':'Ej Ricardo Montaner'})
+        }
